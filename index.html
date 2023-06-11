@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API</title>
+</head>
+<body>
+  <ul id="user-list">
+  </ul>
+
+  <script>
+    // Načítanie dát
+    function fetchData() {
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => {
+          // Výpis na stránku
+          const userList = document.querySelector('#user-list');
+
+          data.forEach(user => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `User: ${user.name}, Email: ${user.email}, Phone:${user.phone}`;
+            userList.appendChild(listItem);
+          });
+        })
+   
+    }
+
+   
+    fetchData();
+  </script>
+</body>
+</html>
+
